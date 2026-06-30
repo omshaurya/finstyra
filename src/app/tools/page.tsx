@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Financial Tools Hub – Free Planning Tools",
   description: "Access our complete suite of financial planning tools — from inflation trackers to budget planners, debt calculators, investment analyzers, and more.",
+  alternates: buildAlternates("/tools"),
 };
 
 const TOOL_SECTIONS = [

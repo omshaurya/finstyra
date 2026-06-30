@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "System Status – Finstyra",
   description: "Real-time operational status of Finstyra's calculators and services.",
+  alternates: buildAlternates("/status"),
 };
 
 const SERVICES = [

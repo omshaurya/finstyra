@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cookie Policy – Finstyra",
   description: "Finstyra Cookie Policy. Learn what cookies we use and how to manage them.",
+  alternates: buildAlternates("/cookies"),
 };
 
 const COOKIE_TYPES = [

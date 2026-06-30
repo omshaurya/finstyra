@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Disclaimer – Finstyra",
   description: "Important disclaimer about Finstyra financial calculators. Results are estimates for informational purposes only.",
+  alternates: buildAlternates("/disclaimer"),
 };
 
 export default function DisclaimerPage() {

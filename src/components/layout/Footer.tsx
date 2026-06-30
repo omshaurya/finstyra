@@ -80,6 +80,39 @@ const TRUST_BADGES = [
   { icon: "⚡", label: "< 2s Load Time" },
 ];
 
+const ALL_COUNTRIES = [
+  "🇺🇸 USA", "🇬🇧 UK", "🇨🇦 Canada", "🇦🇺 Australia", "🇦🇪 UAE", "🇩🇪 Germany",
+  "🇫🇷 France", "🇮🇳 India", "🇸🇬 Singapore", "🇳🇿 New Zealand", "🇨🇭 Switzerland", "🇳🇱 Netherlands",
+  "🇸🇪 Sweden", "🇳🇴 Norway", "🇩🇰 Denmark", "🇫🇮 Finland", "🇦🇹 Austria", "🇧🇪 Belgium",
+  "🇵🇹 Portugal", "🇪🇸 Spain", "🇮🇹 Italy", "🇵🇱 Poland", "🇨🇿 Czech Republic", "🇭🇺 Hungary",
+  "🇷🇴 Romania", "🇬🇷 Greece", "🇮🇪 Ireland", "🇿🇦 South Africa", "🇰🇪 Kenya", "🇳🇬 Nigeria",
+  "🇧🇷 Brazil", "🇲🇽 Mexico", "🇦🇷 Argentina", "🇨🇱 Chile", "🇨🇴 Colombia", "🇯🇵 Japan",
+  "🇰🇷 South Korea", "🇹🇭 Thailand", "🇲🇾 Malaysia", "🇵🇭 Philippines", "🇮🇩 Indonesia",
+  "🇻🇳 Vietnam", "🇭🇰 Hong Kong", "🇹🇼 Taiwan", "🇮🇱 Israel", "🇸🇦 Saudi Arabia",
+  "🇶🇦 Qatar", "🇵🇰 Pakistan", "🇧🇩 Bangladesh", "🇱🇰 Sri Lanka",
+];
+
+function FooterCountries() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? ALL_COUNTRIES : ALL_COUNTRIES.slice(0, 12);
+  return (
+    <div className="mt-10 rounded-2xl border border-[var(--border)] bg-[var(--muted)] px-6 py-4">
+      <p className="text-xs font-semibold text-[var(--foreground)] mb-2">🌍 Serving users in 50+ countries</p>
+      <div className="flex flex-wrap gap-x-4 gap-y-1">
+        {visible.map(c => (
+          <span key={c} className="text-xs text-[var(--muted-foreground)]">{c}</span>
+        ))}
+        <button
+          onClick={() => setExpanded(e => !e)}
+          className="text-xs text-[var(--primary)] hover:underline font-medium"
+        >
+          {expanded ? "Show less" : `+ ${ALL_COUNTRIES.length - 12} more`}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Footer() {
   const [subEmail, setSubEmail] = useState("");
   const [subStatus, setSubStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -265,15 +298,7 @@ export default function Footer() {
         </div>
 
         {/* Country coverage */}
-        <div className="mt-10 rounded-2xl border border-[var(--border)] bg-[var(--muted)] px-6 py-4">
-          <p className="text-xs font-semibold text-[var(--foreground)] mb-2">🌍 Serving users in 50+ countries</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
-            {["🇺🇸 USA", "🇬🇧 UK", "🇨🇦 Canada", "🇦🇺 Australia", "🇦🇪 UAE", "🇩🇪 Germany", "🇫🇷 France", "🇮🇳 India", "🇸🇬 Singapore", "🇳🇿 New Zealand", "🇨🇭 Switzerland", "🇳🇱 Netherlands"].map(c => (
-              <span key={c} className="text-xs text-[var(--muted-foreground)]">{c}</span>
-            ))}
-            <span className="text-xs text-[var(--muted-foreground)]">+ 38 more</span>
-          </div>
-        </div>
+        <FooterCountries />
 
         {/* Bottom bar */}
         <div className="mt-8 border-t border-[var(--border)] pt-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">

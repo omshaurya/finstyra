@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy – Finstyra",
   description: "Finstyra Privacy Policy. Learn how we collect, use, and protect your information.",
+  alternates: buildAlternates("/privacy"),
 };
 
 export default function PrivacyPage() {

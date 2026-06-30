@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Blog – Financial Tips & Guides | Finstyra",
   description: "Expert guides on retirement planning, investing, mortgages, taxes, and personal finance — written by certified financial professionals.",
+  alternates: buildAlternates("/blog"),
 };
 
 const FEATURED = {

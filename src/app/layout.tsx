@@ -21,23 +21,79 @@ export const metadata: Metadata = {
     default: "Finstyra – Free Financial Calculators for Smarter Money Decisions",
     template: "%s | Finstyra",
   },
-  description: "100+ free, accurate financial calculators for FIRE, retirement, investing, mortgages, loans, taxes, and more. Make smarter money decisions with Finstyra.",
-  keywords: ["financial calculator", "retirement calculator", "mortgage calculator", "investment calculator", "FIRE calculator"],
+  description: "100+ free, accurate financial calculators for FIRE, retirement, investing, mortgages, loans, taxes, and more. Trusted by users across the US and Europe to make smarter money decisions.",
+  keywords: ["financial calculator", "retirement calculator", "mortgage calculator", "investment calculator", "FIRE calculator", "loan calculator", "EMI calculator", "currency converter"],
+  applicationName: "Finstyra",
+  authors: [{ name: "Finstyra" }],
+  creator: "Finstyra",
+  publisher: "Finstyra",
+  category: "finance",
+  formatDetection: { telephone: false },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "en-GB": "/",
+      en: "/",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     type: "website",
+    url: "/",
     locale: "en_US",
+    alternateLocale: ["en_GB"],
     siteName: "Finstyra",
+    title: "Finstyra – Free Financial Calculators",
+    description: "100+ free, accurate financial calculators for every money decision — trusted across the US and Europe.",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Finstyra – Free Financial Calculators",
     description: "100+ free, accurate financial calculators for every money decision.",
   },
-  twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Finstyra",
+  "url": "https://finstyra.com",
+  "logo": "https://finstyra.com/icon-512.png",
+  "description": "Finstyra provides 100+ free financial calculators for FIRE, retirement, investing, mortgages, loans, and taxes.",
+  "areaServed": ["US", "GB", "EU"],
+  "sameAs": [],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Finstyra",
+  "url": "https://finstyra.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://finstyra.com/calculators?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script dangerouslySetInnerHTML={{
           __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`
         }} />

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement – Finstyra",
   description: "Finstyra Accessibility Statement. Our commitment to making financial calculators accessible to all users.",
+  alternates: buildAlternates("/accessibility"),
 };
 
 const FEATURES = [

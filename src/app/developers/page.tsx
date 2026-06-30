@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Developer Portal – Finstyra",
   description: "Build financial tools with the Finstyra API. SDKs, documentation, and sandbox environment.",
+  alternates: buildAlternates("/developers"),
 };
 
 const SDKS = [

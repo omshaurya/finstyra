@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us – Finstyra",
   description: "Get in touch with the Finstyra team. We'd love to hear from you.",
+  alternates: buildAlternates("/contact"),
 };
 
 const CHANNELS = [

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Us – Finstyra",
   description: "Learn about Finstyra — our mission to make professional-grade financial calculators free and accessible to everyone.",
+  alternates: buildAlternates("/about"),
 };
 
 const STATS = [

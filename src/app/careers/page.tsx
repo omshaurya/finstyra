@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Careers – Join Finstyra",
   description: "Join the Finstyra team. We're building the world's best free financial calculators. Remote-first, mission-driven, and growing.",
+  alternates: buildAlternates("/careers"),
 };
 
 const OPENINGS = [

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CALCULATORS, getCalculatorBySlug } from "@/lib/calculators";
 import { getCalculatorComponent } from "@/calculators/registry";
+import { buildAlternates } from "@/lib/seo";
 import CalculatorLayout from "@/components/calculator/CalculatorLayout";
 
 export function generateStaticParams() {
@@ -20,10 +21,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: meta.seoTitle,
       description: meta.seoDescription,
       type: "website",
+      url: `/calculator/${meta.slug}`,
     },
-    alternates: {
-      canonical: `/calculator/${meta.slug}`,
-    },
+    alternates: buildAlternates(`/calculator/${meta.slug}`),
   };
 }
 

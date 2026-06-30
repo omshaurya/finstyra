@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CodeBlock from "@/components/CodeBlock";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Developer API – Finstyra Financial Calculator API",
   description: "Integrate 100+ financial calculators into your app with the Finstyra REST API. Free tier available. JSON responses, SDKs, and interactive playground.",
+  alternates: buildAlternates("/api-docs"),
 };
 
 const ENDPOINTS = [

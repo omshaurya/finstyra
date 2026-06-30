@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Changelog – Finstyra",
   description: "Recent updates, new calculators, and improvements to Finstyra.",
+  alternates: buildAlternates("/changelog"),
 };
 
 const ENTRIES = [

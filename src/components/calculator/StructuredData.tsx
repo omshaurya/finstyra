@@ -15,6 +15,8 @@ export default function StructuredData({ meta, faqs }: StructuredDataProps) {
     "name": meta.seoTitle,
     "description": meta.seoDescription,
     "url": `${baseUrl}/calculator/${meta.slug}`,
+    "inLanguage": "en",
+    "isPartOf": { "@type": "WebSite", "name": "Finstyra", "url": baseUrl },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -35,12 +37,6 @@ export default function StructuredData({ meta, faqs }: StructuredDataProps) {
     "description": meta.description,
     "url": `${baseUrl}/calculator/${meta.slug}`,
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "1247",
-      "bestRating": "5",
-    },
   };
 
   const faqSchema = faqs && faqs.length > 0 ? {

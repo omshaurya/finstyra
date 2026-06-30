@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions – Finstyra",
   description: "Finstyra Terms and Conditions. Please read these terms carefully before using our financial calculators.",
+  alternates: buildAlternates("/terms"),
 };
 
 export default function TermsPage() {

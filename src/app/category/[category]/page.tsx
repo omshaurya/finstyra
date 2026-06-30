@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCalculatorsByCategory, CATEGORY_META, getAllCategories, type CalculatorCategory } from "@/lib/calculators";
+import { buildAlternates } from "@/lib/seo";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 
@@ -13,9 +14,16 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category } = await params;
   const meta = CATEGORY_META[category as CalculatorCategory];
   if (!meta) return {};
+  const description = `${meta.description}. Browse ${getCalculatorsByCategory(category as CalculatorCategory).length} free ${meta.name.toLowerCase()} calculators.`;
   return {
     title: `${meta.name} Calculators`,
-    description: `${meta.description}. Browse ${getCalculatorsByCategory(category as CalculatorCategory).length} free ${meta.name.toLowerCase()} calculators.`,
+    description,
+    alternates: buildAlternates(`/category/${category}`),
+    openGraph: {
+      title: `${meta.name} Calculators | Finstyra`,
+      description,
+      url: `/category/${category}`,
+    },
   };
 }
 

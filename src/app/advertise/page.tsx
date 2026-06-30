@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Advertise With Us – Finstyra",
   description: "Reach 500,000+ financially engaged monthly users on Finstyra. Advertising opportunities for financial brands.",
+  alternates: buildAlternates("/advertise"),
 };
 
 const PACKAGES = [

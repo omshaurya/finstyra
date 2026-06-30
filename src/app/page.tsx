@@ -1,6 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { CALCULATORS, CATEGORY_META, getAllCategories, getFeaturedCalculators, getPopularCalculators } from "@/lib/calculators";
 import { FadeIn, SlideUp, StaggerContainer, StaggerItem, Reveal, AnimatedBlob } from "@/components/animations/Motion";
+import { buildAlternates } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  alternates: buildAlternates("/"),
+};
 
 export default function HomePage() {
   const categories = getAllCategories();

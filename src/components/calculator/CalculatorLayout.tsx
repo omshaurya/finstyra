@@ -1,25 +1,47 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { type CalculatorMeta, CATEGORY_META, getRelatedCalculators } from "@/lib/calculators";
 import { Badge } from "@/components/ui/Badge";
 import { useToast } from "@/components/ui/Toast";
 import { CurrencyProvider, CURRENCIES, useCurrency } from "@/context/CurrencyContext";
+import StructuredData from "@/components/calculator/StructuredData";
 
 function CurrencyDropdown() {
   const { currency, setCurrency } = useCurrency();
+  const [open, setOpen] = useState(false);
+  const selected = CURRENCIES.find(c => c.code === currency) ?? CURRENCIES[0];
+
   return (
     <div className="relative">
-      <select
-        value={currency}
-        onChange={e => setCurrency(e.target.value)}
-        className="appearance-none cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--card)] pl-3 pr-7 py-2 text-sm font-medium text-[var(--foreground)] hover:border-[var(--primary)] focus:outline-none focus:border-[var(--primary)] transition-all"
+      <button
+        onClick={() => setOpen(o => !o)}
         aria-label="Select currency"
+        aria-expanded={open}
+        className="flex items-center gap-1.5 cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--card)] pl-3 pr-2.5 py-2 text-sm font-medium text-[var(--foreground)] hover:border-[var(--primary)] focus:outline-none focus:border-[var(--primary)] transition-all"
       >
-        {CURRENCIES.map(c => (
-          <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
-        ))}
-      </select>
-      <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)] text-xs">▾</span>
+        <span>{selected.flag}</span>
+        <span>{selected.code}</span>
+        <span className="text-[var(--muted-foreground)] text-xs ml-0.5">▾</span>
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 top-full mt-1 z-20 max-h-64 w-44 overflow-y-auto rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-lg py-1">
+            {CURRENCIES.map(c => (
+              <button
+                key={c.code}
+                onClick={() => { setCurrency(c.code); setOpen(false); }}
+                className={`w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-[var(--muted)] transition-colors ${c.code === currency ? "text-[var(--primary)] font-semibold" : "text-[var(--foreground)]"}`}
+              >
+                <span>{c.flag}</span>
+                <span>{c.code}</span>
+                <span className="ml-auto text-xs text-[var(--muted-foreground)]">{c.symbol}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -60,6 +82,7 @@ export default function CalculatorLayout({ meta, children }: CalculatorLayoutPro
 
   return (
     <CurrencyProvider>
+      <StructuredData meta={meta} />
       <div className="min-h-screen bg-[var(--background)]">
         {/* Hero */}
         <div className={`relative overflow-hidden border-b border-[var(--border)] bg-gradient-to-br ${grad} bg-[var(--card)]`}>
@@ -97,7 +120,7 @@ export default function CalculatorLayout({ meta, children }: CalculatorLayoutPro
                   <p className="text-[var(--muted-foreground)] text-sm sm:text-base max-w-2xl leading-relaxed">{meta.description}</p>
                   <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
                     <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3 py-1 rounded-full font-semibold border border-emerald-500/20">
-                      Free &bull; Accurate &bull; Updated 2024
+                      Free &bull; Accurate &bull; Instant Results
                     </span>
                   </div>
                 </div>

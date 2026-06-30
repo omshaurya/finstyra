@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Financial Calculator Glossary – Finstyra",
   description: "Plain-English definitions of financial terms used in Finstyra calculators. From APR to XIRR, understand every term.",
+  alternates: buildAlternates("/glossary"),
 };
 
 const TERMS: { term: string; abbr?: string; def: string; category: string }[] = [

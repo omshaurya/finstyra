@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Financial Definitions – Finstyra",
   description: "Key financial concepts and calculator input definitions. Understand exactly what each input and output in our calculators means.",
+  alternates: buildAlternates("/definitions"),
 };
 
 const DEFINITION_GROUPS = [
