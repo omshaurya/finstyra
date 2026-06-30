@@ -89,8 +89,8 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-sm">FC</div>
-            <span className="text-lg font-bold text-[var(--foreground)]">FinCalc<span className="text-[var(--primary)]">Pro</span></span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-sm">FS</div>
+            <span className="text-lg font-bold text-[var(--foreground)]">Fin<span className="text-[var(--primary)]">styra</span></span>
           </Link>
 
           {/* Desktop Nav links */}

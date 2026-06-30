@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CALCULATORS, getAllCategories } from "@/lib/calculators";
 
-const BASE_URL = "https://fincalcpro.com";
+const BASE_URL = "https://finstyra.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

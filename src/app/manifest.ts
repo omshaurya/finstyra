@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "FinCalcPro – Free Financial Calculators",
-    short_name: "FinCalcPro",
+    name: "Finstyra – Free Financial Calculators",
+    short_name: "Finstyra",
     description: "100+ free financial calculators for FIRE, retirement, mortgages, investing, and more.",
     start_url: "/",
     display: "standalone",
@@ -12,7 +12,6 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: "portrait-primary",
     categories: ["finance", "productivity", "utilities"],
     icons: [
-      { src: "/favicon.ico", sizes: "16x16", type: "image/x-icon" },
       { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "maskable" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
     ],

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Financial Definitions – FinCalcPro",
+  title: "Financial Definitions – Finstyra",
   description: "Key financial concepts and calculator input definitions. Understand exactly what each input and output in our calculators means.",
 };
 

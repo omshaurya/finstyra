@@ -16,18 +16,18 @@ const inter = Inter({
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fincalcpro.com"),
+  metadataBase: new URL("https://finstyra.com"),
   title: {
-    default: "FinCalcPro – Free Financial Calculators for Smarter Money Decisions",
-    template: "%s | FinCalcPro",
+    default: "Finstyra – Free Financial Calculators for Smarter Money Decisions",
+    template: "%s | Finstyra",
   },
-  description: "100+ free, accurate financial calculators for FIRE, retirement, investing, mortgages, loans, taxes, and more. Make smarter money decisions with FinCalcPro.",
+  description: "100+ free, accurate financial calculators for FIRE, retirement, investing, mortgages, loans, taxes, and more. Make smarter money decisions with Finstyra.",
   keywords: ["financial calculator", "retirement calculator", "mortgage calculator", "investment calculator", "FIRE calculator"],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "FinCalcPro",
-    title: "FinCalcPro – Free Financial Calculators",
+    siteName: "Finstyra",
+    title: "Finstyra – Free Financial Calculators",
     description: "100+ free, accurate financial calculators for every money decision.",
   },
   twitter: { card: "summary_large_image" },

@@ -16,15 +16,15 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"FinCalcPro" <${process.env.SMTP_USER}>`,
+      from: `"Finstyra" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_RECEIVER_EMAIL,
       replyTo: email,
-      subject: "[FinCalcPro] New Newsletter Subscriber",
+      subject: "[Finstyra] New Newsletter Subscriber",
       html: `
         <div style="font-family:sans-serif;max-width:480px;margin:0 auto">
           <h2 style="color:#6366f1">New Newsletter Subscriber</h2>
           <p><strong>Email:</strong> ${email}</p>
-          <p style="color:#888;font-size:12px">Subscribed via FinCalcPro footer newsletter form.</p>
+          <p style="color:#888;font-size:12px">Subscribed via Finstyra footer newsletter form.</p>
         </div>
       `,
     });

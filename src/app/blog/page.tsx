@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog – Financial Tips & Guides | FinCalcPro",
+  title: "Blog – Financial Tips & Guides | Finstyra",
   description: "Expert guides on retirement planning, investing, mortgages, taxes, and personal finance — written by certified financial professionals.",
 };
 
@@ -38,7 +38,7 @@ export default function BlogPage() {
             📝 Financial Insights
           </span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--foreground)] mb-4">
-            FinCalcPro Blog
+            Finstyra Blog
           </h1>
           <p className="text-lg text-[var(--muted-foreground)]">
             Expert guides, financial tips, and in-depth analysis from our team of certified financial professionals.

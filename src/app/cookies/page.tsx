@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy – FinCalcPro",
-  description: "FinCalcPro Cookie Policy. Learn what cookies we use and how to manage them.",
+  title: "Cookie Policy – Finstyra",
+  description: "Finstyra Cookie Policy. Learn what cookies we use and how to manage them.",
 };
 
 const COOKIE_TYPES = [
@@ -46,7 +46,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">How We Use Cookies</h2>
-            <p>FinCalcPro uses cookies to:</p>
+            <p>Finstyra uses cookies to:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>Remember your theme preference (dark or light mode)</li>
               <li>Understand how calculators are used so we can improve them</li>
@@ -100,7 +100,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">Contact</h2>
-            <p>Questions about our cookie use? Contact us at <a href="mailto:privacy@fincalcpro.com" className="text-[var(--primary)] hover:underline">privacy@fincalcpro.com</a>.</p>
+            <p>Questions about our cookie use? Contact us at <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline">finstyra@gmail.com</a>.</p>
           </section>
 
         </div>

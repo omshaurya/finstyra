@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import CodeBlock from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
-  title: "Developer API – FinCalcPro Financial Calculator API",
-  description: "Integrate 100+ financial calculators into your app with the FinCalcPro REST API. Free tier available. JSON responses, SDKs, and interactive playground.",
+  title: "Developer API – Finstyra Financial Calculator API",
+  description: "Integrate 100+ financial calculators into your app with the Finstyra REST API. Free tier available. JSON responses, SDKs, and interactive playground.",
 };
 
 const ENDPOINTS = [
@@ -19,8 +20,8 @@ const ENDPOINTS = [
 ];
 
 const CODE_EXAMPLES: Record<string, string> = {
-  javascript: `// FinCalcPro API — JavaScript Example
-const response = await fetch('https://api.fincalcpro.com/v1/calculate/sip', {
+  javascript: `// Finstyra API — JavaScript Example
+const response = await fetch('https://api.finstyra.com/v1/calculate/sip', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -44,11 +45,11 @@ console.log(data);
 //   "currency": "INR"
 // }`,
 
-  python: `# FinCalcPro API — Python Example
+  python: `# Finstyra API — Python Example
 import requests
 
 response = requests.post(
-    'https://api.fincalcpro.com/v1/calculate/mortgage',
+    'https://api.finstyra.com/v1/calculate/mortgage',
     headers={'Authorization': 'Bearer YOUR_API_KEY'},
     json={
         'home_price': 400000,
@@ -68,8 +69,8 @@ print("Total Interest: $" + format(interest, ",.0f"))
 # Monthly Payment: $2,129
 # Total Interest: $446,428`,
 
-  curl: `# FinCalcPro API — cURL Example
-curl -X POST https://api.fincalcpro.com/v1/calculate/compound-interest \\
+  curl: `# Finstyra API — cURL Example
+curl -X POST https://api.finstyra.com/v1/calculate/compound-interest \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -87,10 +88,10 @@ curl -X POST https://api.fincalcpro.com/v1/calculate/compound-interest \\
 # }`,
 
   php: `<?php
-// FinCalcPro API — PHP Example
+// Finstyra API — PHP Example
 $client = new GuzzleHttp\\Client();
 
-$response = $client->post('https://api.fincalcpro.com/v1/calculate/emi', [
+$response = $client->post('https://api.finstyra.com/v1/calculate/emi', [
     'headers' => [
         'Authorization' => 'Bearer YOUR_API_KEY',
         'Content-Type' => 'application/json',
@@ -124,12 +125,12 @@ export default function ApiDocsPage() {
               Integrate 100+ financial calculators into your app, website, or workflow. REST API with JSON responses, SDKs, and an interactive playground. Free tier available.
             </p>
             <div className="flex flex-wrap gap-3">
-              <button className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 text-sm font-semibold transition-colors">
+              <a href="mailto:finstyra@gmail.com?subject=API%20Key%20Request" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 text-sm font-semibold transition-colors">
                 Get Free API Key →
-              </button>
-              <button className="inline-flex items-center gap-2 rounded-xl border border-slate-600 hover:border-slate-400 text-slate-200 px-6 py-3 text-sm font-semibold transition-colors">
+              </a>
+              <a href="#endpoints" className="inline-flex items-center gap-2 rounded-xl border border-slate-600 hover:border-slate-400 text-slate-200 px-6 py-3 text-sm font-semibold transition-colors">
                 View API Reference
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -142,13 +143,13 @@ export default function ApiDocsPage() {
           <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4">Base URL</h2>
           <div className="rounded-2xl bg-[var(--card)] border border-[var(--border)] p-4 font-mono text-sm">
             <span className="text-[var(--muted-foreground)]">Base URL: </span>
-            <span className="text-[var(--primary)]">https://api.fincalcpro.com/v1</span>
+            <span className="text-[var(--primary)]">https://api.finstyra.com/v1</span>
           </div>
           <p className="text-sm text-[var(--muted-foreground)] mt-2">All requests require an <code className="bg-[var(--muted)] px-1.5 py-0.5 rounded text-xs">Authorization: Bearer YOUR_API_KEY</code> header.</p>
         </div>
 
         {/* Endpoints */}
-        <div>
+        <div id="endpoints" className="scroll-mt-24">
           <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">Available Endpoints</h2>
           <div className="space-y-2">
             {ENDPOINTS.map(ep => (
@@ -172,22 +173,14 @@ export default function ApiDocsPage() {
           <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">Code Examples</h2>
           <div className="space-y-4">
             {Object.entries(CODE_EXAMPLES).map(([lang, code]) => (
-              <div key={lang} className="rounded-2xl overflow-hidden border border-[var(--border)]">
-                <div className="flex items-center justify-between bg-[var(--muted)] px-4 py-2.5 border-b border-[var(--border)]">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] capitalize">{lang}</span>
-                  <span className="text-[10px] text-[var(--muted-foreground)]">Click to copy</span>
-                </div>
-                <pre className="bg-[var(--card)] p-4 text-xs text-[var(--foreground)] overflow-x-auto leading-relaxed">
-                  <code>{code}</code>
-                </pre>
-              </div>
+              <CodeBlock key={lang} lang={lang} code={code} />
             ))}
           </div>
         </div>
 
         {/* Features */}
         <div className="rounded-3xl bg-[var(--card)] border border-[var(--border)] p-8">
-          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">Why FinCalcPro API?</h2>
+          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">Why Finstyra API?</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: "⚡", title: "Lightning Fast", desc: "Median response time < 50ms. Built on globally distributed edge infrastructure." },

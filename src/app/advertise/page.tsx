@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Advertise With Us – FinCalcPro",
-  description: "Reach 500,000+ financially engaged monthly users on FinCalcPro. Advertising opportunities for financial brands.",
+  title: "Advertise With Us – Finstyra",
+  description: "Reach 500,000+ financially engaged monthly users on Finstyra. Advertising opportunities for financial brands.",
 };
 
 const PACKAGES = [
@@ -22,7 +22,7 @@ const PACKAGES = [
   {
     name: "Homepage Feature",
     price: "$4,000/mo",
-    desc: "Featured placement on the FinCalcPro homepage, seen by every visitor before they navigate to a calculator.",
+    desc: "Featured placement on the Finstyra homepage, seen by every visitor before they navigate to a calculator.",
     features: ["Homepage hero banner", "Featured Tools section", "Social media shoutout", "A/B creative testing"],
   },
 ];
@@ -47,7 +47,7 @@ export default function AdvertisePage() {
             Reach High-Intent<br />Financial Consumers
           </h1>
           <p className="text-lg text-[var(--muted-foreground)]">
-            FinCalcPro attracts users actively researching mortgages, investments, retirement, and loans — people ready to make financial decisions.
+            Finstyra attracts users actively researching mortgages, investments, retirement, and loans — people ready to make financial decisions.
           </p>
         </div>
       </div>
@@ -99,8 +99,8 @@ export default function AdvertisePage() {
         <div className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--muted)] p-6 text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
             Need a custom package? Contact us at{" "}
-            <a href="mailto:partnerships@fincalcpro.com" className="text-[var(--primary)] hover:underline font-medium">
-              partnerships@fincalcpro.com
+            <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline font-medium">
+              finstyra@gmail.com
             </a>
           </p>
         </div>

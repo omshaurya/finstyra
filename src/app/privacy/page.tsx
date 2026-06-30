@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy – FinCalcPro",
-  description: "FinCalcPro Privacy Policy. Learn how we collect, use, and protect your information.",
+  title: "Privacy Policy – Finstyra",
+  description: "Finstyra Privacy Policy. Learn how we collect, use, and protect your information.",
 };
 
 export default function PrivacyPage() {
@@ -20,14 +20,14 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">1. Overview</h2>
-            <p>FinCalcPro (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website at fincalcpro.com (the &quot;Service&quot;).</p>
-            <p className="mt-3">All calculations performed on FinCalcPro are processed entirely in your browser. We do not transmit your financial inputs to our servers, and we do not store them.</p>
+            <p>Finstyra (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website at finstyra.com (the &quot;Service&quot;).</p>
+            <p className="mt-3">All calculations performed on Finstyra are processed entirely in your browser. We do not transmit your financial inputs to our servers, and we do not store them.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">2. Information We Collect</h2>
             <p className="font-medium text-[var(--foreground)] mb-2">2.1 Information you provide</p>
-            <p>We do not require you to create an account to use FinCalcPro. Calculator inputs (principal amounts, interest rates, time periods, etc.) are processed locally in your browser and are not collected or stored by us.</p>
+            <p>We do not require you to create an account to use Finstyra. Calculator inputs (principal amounts, interest rates, time periods, etc.) are processed locally in your browser and are not collected or stored by us.</p>
             <p className="font-medium text-[var(--foreground)] mt-4 mb-2">2.2 Automatically collected information</p>
             <p>When you visit our website, we may automatically collect:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">3. How We Use Your Information</h2>
             <ul className="list-disc pl-5 space-y-2">
-              <li>To operate and improve the FinCalcPro website and calculators</li>
+              <li>To operate and improve the Finstyra website and calculators</li>
               <li>To analyse usage trends and user behaviour in aggregate</li>
               <li>To detect and prevent technical errors or abuse</li>
               <li>To respond to your enquiries when you contact us</li>
@@ -84,25 +84,25 @@ export default function PrivacyPage() {
               <li>Data portability</li>
               <li>Withdraw consent at any time</li>
             </ul>
-            <p className="mt-3">To exercise these rights, contact us at <a href="mailto:privacy@fincalcpro.com" className="text-[var(--primary)] hover:underline">privacy@fincalcpro.com</a>.</p>
+            <p className="mt-3">To exercise these rights, contact us at <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline">finstyra@gmail.com</a>.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">8. Children&apos;s Privacy</h2>
-            <p>FinCalcPro is not directed at children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us immediately.</p>
+            <p>Finstyra is not directed at children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us immediately.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">9. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the &quot;Last updated&quot; date above. Your continued use of FinCalcPro after changes constitutes acceptance of the updated policy.</p>
+            <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the &quot;Last updated&quot; date above. Your continued use of Finstyra after changes constitutes acceptance of the updated policy.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">10. Contact Us</h2>
             <p>For privacy-related questions, contact us at:</p>
             <div className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--muted)] p-4 text-sm">
-              <p className="font-medium text-[var(--foreground)]">FinCalcPro Privacy Team</p>
-              <p>Email: <a href="mailto:privacy@fincalcpro.com" className="text-[var(--primary)] hover:underline">privacy@fincalcpro.com</a></p>
+              <p className="font-medium text-[var(--foreground)]">Finstyra Privacy Team</p>
+              <p>Email: <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline">finstyra@gmail.com</a></p>
             </div>
           </section>
 

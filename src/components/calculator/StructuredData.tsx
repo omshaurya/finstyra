@@ -6,7 +6,7 @@ interface StructuredDataProps {
 }
 
 export default function StructuredData({ meta, faqs }: StructuredDataProps) {
-  const baseUrl = "https://fincalcpro.com";
+  const baseUrl = "https://finstyra.com";
   const catMeta = CATEGORY_META[meta.category];
 
   const webPageSchema = {

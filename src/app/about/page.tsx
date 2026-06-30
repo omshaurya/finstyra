@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Us – FinCalcPro",
-  description: "Learn about FinCalcPro — our mission to make professional-grade financial calculators free and accessible to everyone.",
+  title: "About Us – Finstyra",
+  description: "Learn about Finstyra — our mission to make professional-grade financial calculators free and accessible to everyone.",
 };
 
 const STATS = [
@@ -14,7 +14,7 @@ const STATS = [
 ];
 
 const TEAM = [
-  { name: "Sarah Chen", role: "Founder & CEO", bio: "Former fintech analyst with 10+ years at Goldman Sachs. Built FinCalcPro to democratize financial planning tools." },
+  { name: "Sarah Chen", role: "Founder & CEO", bio: "Former fintech analyst with 10+ years at Goldman Sachs. Built Finstyra to democratize financial planning tools." },
   { name: "Raj Patel", role: "Head of Engineering", bio: "Ex-Google engineer passionate about building fast, accessible financial tools for users worldwide." },
   { name: "Emily Brooks", role: "Head of Finance", bio: "CFA charterholder and certified financial planner who ensures every formula is accurate and up to date." },
   { name: "Marcus Kim", role: "Head of Design", bio: "Product designer focused on making complex financial concepts simple and beautiful for everyday users." },
@@ -40,7 +40,7 @@ export default function AboutPage() {
             Making Financial Planning<br />Accessible to Everyone
           </h1>
           <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
-            FinCalcPro was founded with a simple belief: world-class financial calculators should be free, accurate, and available to anyone — not just those who can afford a financial advisor.
+            Finstyra was founded with a simple belief: world-class financial calculators should be free, accurate, and available to anyone — not just those who can afford a financial advisor.
           </p>
         </div>
       </div>
@@ -63,10 +63,10 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl px-4 py-16 lg:px-8">
         <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4">Our Mission</h2>
         <p className="text-[var(--muted-foreground)] leading-relaxed mb-4">
-          FinCalcPro started in 2021 when our founder, frustrated by inaccurate and ad-heavy financial calculators, built a better mortgage calculator for personal use. Friends and colleagues started using it, sharing it, and requesting more tools.
+          Finstyra started in 2021 when our founder, frustrated by inaccurate and ad-heavy financial calculators, built a better mortgage calculator for personal use. Friends and colleagues started using it, sharing it, and requesting more tools.
         </p>
         <p className="text-[var(--muted-foreground)] leading-relaxed mb-4">
-          Today, FinCalcPro is a platform of 100+ professionally designed calculators covering everything from retirement planning and FIRE calculations to mortgage amortization, SIP investments, EMI breakdowns, and tax estimation.
+          Today, Finstyra is a platform of 100+ professionally designed calculators covering everything from retirement planning and FIRE calculations to mortgage amortization, SIP investments, EMI breakdowns, and tax estimation.
         </p>
         <p className="text-[var(--muted-foreground)] leading-relaxed">
           Every calculator is built with real financial formulas, reviewed by certified professionals, and tested for accuracy across edge cases. We update our tools whenever tax laws, contribution limits, or financial regulations change.
@@ -112,7 +112,7 @@ export default function AboutPage() {
       <div className="border-t border-[var(--border)] bg-[var(--card)]">
         <div className="mx-auto max-w-4xl px-4 py-12 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-[var(--foreground)] mb-3">Start Calculating</h2>
-          <p className="text-[var(--muted-foreground)] mb-6">Join 500,000+ users who trust FinCalcPro for their financial decisions.</p>
+          <p className="text-[var(--muted-foreground)] mb-6">Join 500,000+ users who trust Finstyra for their financial decisions.</p>
           <Link href="/calculators" className="inline-flex items-center gap-2 rounded-xl bg-[var(--primary)] text-white px-8 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm">
             Browse All Calculators →
           </Link>

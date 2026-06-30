@@ -51,7 +51,7 @@ export default function ExportPanel({ title, data, projections }: ExportPanelPro
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
       doc.setTextColor(100);
-      doc.text(`Generated on ${new Date().toLocaleDateString()} by FinCalcPro`, 20, 33);
+      doc.text(`Generated on ${new Date().toLocaleDateString()} by Finstyra`, 20, 33);
 
       doc.setLineWidth(0.3);
       doc.setDrawColor(200);

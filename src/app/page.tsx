@@ -22,7 +22,7 @@ export default function HomePage() {
           <FadeIn delay={0.05}>
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--muted)] px-4 py-1.5 text-sm font-medium text-[var(--muted-foreground)] mb-6 shadow-sm">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              100+ Free Financial Calculators — Updated 2024
+              100+ Free Financial Calculators
             </div>
           </FadeIn>
 
@@ -196,7 +196,7 @@ export default function HomePage() {
         <Reveal>
           <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 lg:p-12 card-shadow">
             <div className="text-center mb-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] mb-2">Why FinCalcPro</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] mb-2">Why Finstyra</p>
               <h2 className="text-2xl font-bold text-[var(--foreground)]">Built for Serious Financial Planning</h2>
             </div>
             <StaggerContainer className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerChildren={0.1}>

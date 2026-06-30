@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://fincalcpro.com/sitemap.xml",
-    host: "https://fincalcpro.com",
+    sitemap: "https://finstyra.com/sitemap.xml",
+    host: "https://finstyra.com",
   };
 }

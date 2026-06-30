@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions – FinCalcPro",
-  description: "FinCalcPro Terms and Conditions. Please read these terms carefully before using our financial calculators.",
+  title: "Terms & Conditions – Finstyra",
+  description: "Finstyra Terms and Conditions. Please read these terms carefully before using our financial calculators.",
 };
 
 export default function TermsPage() {
@@ -20,12 +20,12 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">1. Agreement to Terms</h2>
-            <p>By accessing or using FinCalcPro (&quot;the Service&quot;), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website.</p>
+            <p>By accessing or using Finstyra (&quot;the Service&quot;), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">2. Description of Service</h2>
-            <p>FinCalcPro provides free online financial calculators for informational and educational purposes. Our calculators are designed to help users understand financial concepts and estimate outcomes based on inputs they provide.</p>
+            <p>Finstyra provides free online financial calculators for informational and educational purposes. Our calculators are designed to help users understand financial concepts and estimate outcomes based on inputs they provide.</p>
             <p className="mt-3">The Service is provided &quot;as is&quot; and we make no guarantees as to the accuracy, completeness, or suitability of the calculations for any particular purpose.</p>
           </section>
 
@@ -34,7 +34,7 @@ export default function TermsPage() {
             <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-4 mb-3">
               <p className="text-amber-800 dark:text-amber-200 font-medium text-sm">Important Disclaimer</p>
             </div>
-            <p>FinCalcPro does not provide financial, investment, tax, legal, or accounting advice. All content on this website is for informational and educational purposes only.</p>
+            <p>Finstyra does not provide financial, investment, tax, legal, or accounting advice. All content on this website is for informational and educational purposes only.</p>
             <p className="mt-3">Calculator results are estimates based on the inputs you provide and mathematical formulas. They should not be relied upon as the sole basis for any financial decision. Before making any significant financial decisions, you should consult a qualified financial professional.</p>
           </section>
 
@@ -46,7 +46,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">5. Intellectual Property</h2>
-            <p>All content on FinCalcPro — including text, graphics, logos, calculator designs, and software — is the property of FinCalcPro and protected by applicable intellectual property laws.</p>
+            <p>All content on Finstyra — including text, graphics, logos, calculator designs, and software — is the property of Finstyra and protected by applicable intellectual property laws.</p>
             <p className="mt-3">You may use our calculators for personal, non-commercial purposes. You may not copy, reproduce, distribute, or create derivative works from our content without written permission.</p>
           </section>
 
@@ -65,7 +65,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">7. Limitation of Liability</h2>
-            <p>To the fullest extent permitted by law, FinCalcPro and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the Service — including any financial losses resulting from reliance on calculator results.</p>
+            <p>To the fullest extent permitted by law, Finstyra and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the Service — including any financial losses resulting from reliance on calculator results.</p>
           </section>
 
           <section>
@@ -85,7 +85,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">11. Contact</h2>
-            <p>For questions about these Terms, contact us at <a href="mailto:legal@fincalcpro.com" className="text-[var(--primary)] hover:underline">legal@fincalcpro.com</a>.</p>
+            <p>For questions about these Terms, contact us at <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline">finstyra@gmail.com</a>.</p>
           </section>
 
         </div>

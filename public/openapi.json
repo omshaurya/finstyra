@@ -1,0 +1,422 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Finstyra Financial Calculator API",
+    "version": "1.0.0",
+    "description": "REST API for integrating Finstyra's financial calculators into third-party apps and workflows. Currently in private beta — request access at finstyra@gmail.com.",
+    "contact": {
+      "name": "Finstyra API Team",
+      "email": "finstyra@gmail.com"
+    }
+  },
+  "servers": [
+    { "url": "https://api.finstyra.com/v1", "description": "Production (private beta)" }
+  ],
+  "security": [{ "bearerAuth": [] }],
+  "tags": [
+    { "name": "Calculators", "description": "Discover available calculators" },
+    { "name": "Calculate", "description": "Run a financial calculation" },
+    { "name": "Currency", "description": "Currency rates and conversion" }
+  ],
+  "paths": {
+    "/calculators": {
+      "get": {
+        "tags": ["Calculators"],
+        "summary": "List all available calculators with metadata",
+        "operationId": "listCalculators",
+        "responses": {
+          "200": {
+            "description": "A list of calculators",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/CalculatorMeta" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/compound-interest": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Calculate compound interest",
+        "operationId": "calculateCompoundInterest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["principal", "annual_rate", "years"],
+                "properties": {
+                  "principal": { "type": "number", "example": 100000 },
+                  "annual_rate": { "type": "number", "example": 8 },
+                  "years": { "type": "number", "example": 10 },
+                  "compound_frequency": { "type": "string", "enum": ["annually", "quarterly", "monthly", "daily"], "default": "annually" },
+                  "currency": { "type": "string", "example": "USD" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Compound interest result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "future_value": { "type": "number" },
+                    "interest_earned": { "type": "number" },
+                    "effective_annual_rate": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/mortgage": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Calculate mortgage payment & amortization",
+        "operationId": "calculateMortgage",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["home_price", "down_payment", "interest_rate", "loan_term"],
+                "properties": {
+                  "home_price": { "type": "number", "example": 400000 },
+                  "down_payment": { "type": "number", "example": 80000 },
+                  "interest_rate": { "type": "number", "example": 7.0 },
+                  "loan_term": { "type": "integer", "example": 30 },
+                  "currency": { "type": "string", "example": "USD" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mortgage result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "monthly_payment": { "type": "number" },
+                    "total_interest": { "type": "number" },
+                    "total_paid": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/sip": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Calculate SIP future value",
+        "operationId": "calculateSip",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["monthly_investment", "annual_return", "years"],
+                "properties": {
+                  "monthly_investment": { "type": "number", "example": 10000 },
+                  "annual_return": { "type": "number", "example": 12 },
+                  "years": { "type": "number", "example": 10 },
+                  "currency": { "type": "string", "example": "INR" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "SIP result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "future_value": { "type": "number" },
+                    "total_invested": { "type": "number" },
+                    "wealth_gained": { "type": "number" },
+                    "cagr": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/emi": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Calculate EMI and loan amortization",
+        "operationId": "calculateEmi",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["principal", "annual_rate", "tenure_months"],
+                "properties": {
+                  "principal": { "type": "number", "example": 500000 },
+                  "annual_rate": { "type": "number", "example": 10.5 },
+                  "tenure_months": { "type": "integer", "example": 60 },
+                  "currency": { "type": "string", "example": "INR" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "EMI result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "emi": { "type": "number" },
+                    "total_interest": { "type": "number" },
+                    "total_payment": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/fire": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Calculate FIRE number and timeline",
+        "operationId": "calculateFire",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["annual_expenses", "current_savings", "annual_savings", "expected_return"],
+                "properties": {
+                  "annual_expenses": { "type": "number", "example": 60000 },
+                  "current_savings": { "type": "number", "example": 50000 },
+                  "annual_savings": { "type": "number", "example": 20000 },
+                  "expected_return": { "type": "number", "example": 7 },
+                  "withdrawal_rate": { "type": "number", "example": 4, "default": 4 },
+                  "currency": { "type": "string", "example": "USD" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "FIRE result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fire_number": { "type": "number" },
+                    "years_to_fire": { "type": "number" },
+                    "fire_age": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/retirement": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Retirement corpus projection",
+        "operationId": "calculateRetirement",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["current_age", "retirement_age", "current_savings", "monthly_contribution", "expected_return"],
+                "properties": {
+                  "current_age": { "type": "integer", "example": 30 },
+                  "retirement_age": { "type": "integer", "example": 65 },
+                  "current_savings": { "type": "number", "example": 50000 },
+                  "monthly_contribution": { "type": "number", "example": 1500 },
+                  "expected_return": { "type": "number", "example": 7 },
+                  "currency": { "type": "string", "example": "USD" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Retirement projection result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "projected_corpus": { "type": "number" },
+                    "total_contributions": { "type": "number" },
+                    "monthly_retirement_income": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calculate/cagr": {
+      "post": {
+        "tags": ["Calculate"],
+        "summary": "Compound Annual Growth Rate",
+        "operationId": "calculateCagr",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["initial_value", "final_value", "years"],
+                "properties": {
+                  "initial_value": { "type": "number", "example": 10000 },
+                  "final_value": { "type": "number", "example": 25000 },
+                  "years": { "type": "number", "example": 5 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CAGR result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cagr": { "type": "number" },
+                    "total_return_pct": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currency/rates": {
+      "get": {
+        "tags": ["Currency"],
+        "summary": "Live currency exchange rates (20+ currencies)",
+        "operationId": "getCurrencyRates",
+        "parameters": [
+          { "name": "base", "in": "query", "schema": { "type": "string", "default": "USD" }, "description": "Base currency code" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exchange rates keyed by currency code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "base": { "type": "string" },
+                    "rates": { "type": "object", "additionalProperties": { "type": "number" } },
+                    "updated_at": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currency/convert": {
+      "post": {
+        "tags": ["Currency"],
+        "summary": "Convert between currencies",
+        "operationId": "convertCurrency",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["amount", "from", "to"],
+                "properties": {
+                  "amount": { "type": "number", "example": 1000 },
+                  "from": { "type": "string", "example": "USD" },
+                  "to": { "type": "string", "example": "EUR" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conversion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "converted_amount": { "type": "number" },
+                    "rate": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "API Key",
+        "description": "Pass your API key as: Authorization: Bearer YOUR_API_KEY"
+      }
+    },
+    "schemas": {
+      "CalculatorMeta": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "compound-interest" },
+          "name": { "type": "string", "example": "Compound Interest Calculator" },
+          "category": { "type": "string", "example": "investing" },
+          "endpoint": { "type": "string", "example": "/calculate/compound-interest" }
+        }
+      }
+    }
+  }
+}

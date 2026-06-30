@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Financial Calculator Glossary – FinCalcPro",
-  description: "Plain-English definitions of financial terms used in FinCalcPro calculators. From APR to XIRR, understand every term.",
+  title: "Financial Calculator Glossary – Finstyra",
+  description: "Plain-English definitions of financial terms used in Finstyra calculators. From APR to XIRR, understand every term.",
 };
 
 const TERMS: { term: string; abbr?: string; def: string; category: string }[] = [
@@ -52,7 +52,7 @@ export default function GlossaryPage() {
             Calculator Glossary
           </h1>
           <p className="text-[var(--muted-foreground)]">
-            Plain-English definitions of every financial term used across FinCalcPro calculators.
+            Plain-English definitions of every financial term used across Finstyra calculators.
           </p>
           <p className="text-sm text-[var(--muted-foreground)] mt-2">{TERMS.length} terms defined</p>
         </div>

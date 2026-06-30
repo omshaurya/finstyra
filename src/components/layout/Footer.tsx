@@ -146,8 +146,8 @@ export default function Footer() {
           {/* Col 1 — Brand + About */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-md">FC</div>
-              <span className="text-lg font-bold text-[var(--foreground)]">FinCalc<span className="text-[var(--primary)]">Pro</span></span>
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-md">FS</div>
+              <span className="text-lg font-bold text-[var(--foreground)]">Fin<span className="text-[var(--primary)]">styra</span></span>
             </Link>
 
             <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
@@ -279,7 +279,7 @@ export default function Footer() {
         <div className="mt-8 border-t border-[var(--border)] pt-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <p className="text-xs text-[var(--muted-foreground)]">
-              © {new Date().getFullYear()} FinCalcPro. All rights reserved. For informational purposes only — not financial advice.
+              © {new Date().getFullYear()} Finstyra. All rights reserved. For informational purposes only — not financial advice.
             </p>
             <p className="text-xs text-[var(--muted-foreground)]">
               Calculations are estimates. Consult a qualified financial advisor before making financial decisions.

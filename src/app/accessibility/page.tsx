@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement – FinCalcPro",
-  description: "FinCalcPro Accessibility Statement. Our commitment to making financial calculators accessible to all users.",
+  title: "Accessibility Statement – Finstyra",
+  description: "Finstyra Accessibility Statement. Our commitment to making financial calculators accessible to all users.",
 };
 
 const FEATURES = [
@@ -29,7 +29,7 @@ export default function AccessibilityPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">Our Commitment</h2>
-            <p>FinCalcPro is committed to ensuring that our financial calculators are accessible to everyone, including people with disabilities. We aim to conform to the <strong className="text-[var(--foreground)]">Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong> standards.</p>
+            <p>Finstyra is committed to ensuring that our financial calculators are accessible to everyone, including people with disabilities. We aim to conform to the <strong className="text-[var(--foreground)]">Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong> standards.</p>
             <p className="mt-3">We believe that financial planning tools should be available to all users, regardless of how they interact with the web.</p>
           </section>
 
@@ -59,7 +59,7 @@ export default function AccessibilityPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">Technical Specifications</h2>
-            <p>FinCalcPro relies on the following technologies for conformance:</p>
+            <p>Finstyra relies on the following technologies for conformance:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>HTML5 semantic elements</li>
               <li>WAI-ARIA 1.2 attributes</li>
@@ -70,10 +70,10 @@ export default function AccessibilityPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)] mb-3">Feedback &amp; Contact</h2>
-            <p>We welcome feedback on the accessibility of FinCalcPro. If you encounter any accessibility barriers or need assistance accessing content, please contact us:</p>
+            <p>We welcome feedback on the accessibility of Finstyra. If you encounter any accessibility barriers or need assistance accessing content, please contact us:</p>
             <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--muted)] p-4 text-sm">
               <p className="font-medium text-[var(--foreground)] mb-1">Accessibility Team</p>
-              <p>Email: <a href="mailto:accessibility@fincalcpro.com" className="text-[var(--primary)] hover:underline">accessibility@fincalcpro.com</a></p>
+              <p>Email: <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline">finstyra@gmail.com</a></p>
               <p className="mt-1 text-xs">We aim to respond to accessibility feedback within 2 business days.</p>
             </div>
           </section>

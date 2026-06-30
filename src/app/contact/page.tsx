@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us – FinCalcPro",
-  description: "Get in touch with the FinCalcPro team. We'd love to hear from you.",
+  title: "Contact Us – Finstyra",
+  description: "Get in touch with the Finstyra team. We'd love to hear from you.",
 };
 
 const CHANNELS = [
@@ -11,29 +11,29 @@ const CHANNELS = [
     icon: "📧",
     title: "General Enquiries",
     desc: "Questions about our calculators, methodology, or platform.",
-    contact: "hello@fincalcpro.com",
-    href: "mailto:hello@fincalcpro.com",
+    contact: "finstyra@gmail.com",
+    href: "mailto:finstyra@gmail.com",
   },
   {
     icon: "🐞",
     title: "Bug Reports",
     desc: "Found an error in a calculation or a broken feature?",
-    contact: "bugs@fincalcpro.com",
-    href: "mailto:bugs@fincalcpro.com",
+    contact: "finstyra@gmail.com",
+    href: "mailto:finstyra@gmail.com",
   },
   {
     icon: "🤝",
     title: "Partnerships & Media",
     desc: "Press inquiries, partnerships, and collaboration requests.",
-    contact: "partnerships@fincalcpro.com",
-    href: "mailto:partnerships@fincalcpro.com",
+    contact: "finstyra@gmail.com",
+    href: "mailto:finstyra@gmail.com",
   },
   {
     icon: "⚡",
     title: "Developer API",
     desc: "Questions about our API, enterprise plans, or integrations.",
-    contact: "api@fincalcpro.com",
-    href: "mailto:api@fincalcpro.com",
+    contact: "finstyra@gmail.com",
+    href: "mailto:finstyra@gmail.com",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function ContactPage() {
         {/* Response time */}
         <div className="mt-10 rounded-2xl border border-[var(--border)] bg-[var(--muted)] p-6 text-center">
           <p className="text-sm font-semibold text-[var(--foreground)] mb-1">⏱ Typical Response Time</p>
-          <p className="text-sm text-[var(--muted-foreground)]">We respond to all messages within <strong className="text-[var(--foreground)]">1–2 business days</strong>. For urgent issues, email bugs@fincalcpro.com directly.</p>
+          <p className="text-sm text-[var(--muted-foreground)]">We respond to all messages within <strong className="text-[var(--foreground)]">1–2 business days</strong>. For urgent issues, email finstyra@gmail.com directly.</p>
         </div>
 
         {/* FAQ teaser */}

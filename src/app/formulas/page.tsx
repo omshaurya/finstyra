@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Financial Formulas – FinCalcPro",
-  description: "All financial formulas used by FinCalcPro calculators. Transparent, accurate, and explained with examples.",
+  title: "Financial Formulas – Finstyra",
+  description: "All financial formulas used by Finstyra calculators. Transparent, accurate, and explained with examples.",
 };
 
 const FORMULA_SECTIONS = [
@@ -120,7 +120,7 @@ export default function FormulasPage() {
             Financial Formulas Used
           </h1>
           <p className="text-[var(--muted-foreground)]">
-            Every FinCalcPro calculator is built on standard financial formulas. We believe in full transparency — here&apos;s exactly what we calculate and how.
+            Every Finstyra calculator is built on standard financial formulas. We believe in full transparency — here&apos;s exactly what we calculate and how.
           </p>
         </div>
       </div>

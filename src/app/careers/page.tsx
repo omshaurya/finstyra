@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers – Join FinCalcPro",
-  description: "Join the FinCalcPro team. We're building the world's best free financial calculators. Remote-first, mission-driven, and growing.",
+  title: "Careers – Join Finstyra",
+  description: "Join the Finstyra team. We're building the world's best free financial calculators. Remote-first, mission-driven, and growing.",
 };
 
 const OPENINGS = [
@@ -82,7 +82,7 @@ export default function CareersPage() {
         <div className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--muted)] p-6 text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
             Don&apos;t see a role that fits? We&apos;re always looking for exceptional people.{" "}
-            <a href="mailto:careers@fincalcpro.com" className="text-[var(--primary)] hover:underline font-medium">
+            <a href="mailto:finstyra@gmail.com" className="text-[var(--primary)] hover:underline font-medium">
               Send us your resume →
             </a>
           </p>
