@@ -8,8 +8,9 @@ export function generateStaticParams() {
   return CALCULATORS.map(c => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const meta = getCalculatorBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const meta = getCalculatorBySlug(slug);
   if (!meta) return {};
   return {
     title: meta.seoTitle,
@@ -26,11 +27,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function CalculatorPage({ params }: { params: { slug: string } }) {
-  const meta = getCalculatorBySlug(params.slug);
+export default async function CalculatorPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const meta = getCalculatorBySlug(slug);
   if (!meta) notFound();
 
-  const CalculatorComponent = getCalculatorComponent(params.slug);
+  const CalculatorComponent = getCalculatorComponent(slug);
   if (!CalculatorComponent) notFound();
 
   return (

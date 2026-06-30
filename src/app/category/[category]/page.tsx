@@ -9,17 +9,19 @@ export function generateStaticParams() {
   return getAllCategories().map(category => ({ category }));
 }
 
-export function generateMetadata({ params }: { params: { category: string } }): Metadata {
-  const meta = CATEGORY_META[params.category as CalculatorCategory];
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const { category } = await params;
+  const meta = CATEGORY_META[category as CalculatorCategory];
   if (!meta) return {};
   return {
     title: `${meta.name} Calculators`,
-    description: `${meta.description}. Browse ${getCalculatorsByCategory(params.category as CalculatorCategory).length} free ${meta.name.toLowerCase()} calculators.`,
+    description: `${meta.description}. Browse ${getCalculatorsByCategory(category as CalculatorCategory).length} free ${meta.name.toLowerCase()} calculators.`,
   };
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const cat = params.category as CalculatorCategory;
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params;
+  const cat = category as CalculatorCategory;
   const meta = CATEGORY_META[cat];
   if (!meta) notFound();
 
