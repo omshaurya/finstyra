@@ -52,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
 
         <div className={cn(
-          "flex items-center rounded-xl border-2 bg-[var(--card)] transition-all duration-200",
+          "flex items-center rounded-xl border-2 bg-[var(--card)] transition-all duration-200 overflow-hidden",
           focused
             ? "border-[var(--primary)] shadow-[0_0_0_3px_rgba(99,102,241,0.12)]"
             : "border-[var(--border)] hover:border-[var(--muted-foreground)]",
@@ -71,7 +71,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             className={cn(
-              "flex-1 bg-transparent py-2.5 text-sm font-semibold text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] placeholder:font-normal focus:outline-none",
+              "flex-1 min-w-0 bg-transparent py-2.5 text-sm font-semibold text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] placeholder:font-normal focus:outline-none",
               prefix ? "pl-0 pr-3" : "px-3",
               suffix && "pr-0",
               className,

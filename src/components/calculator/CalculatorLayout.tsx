@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { type CalculatorMeta, CATEGORY_META, getRelatedCalculators } from "@/lib/calculators";
 import { Badge } from "@/components/ui/Badge";
@@ -10,33 +10,52 @@ import StructuredData from "@/components/calculator/StructuredData";
 function CurrencyDropdown() {
   const { currency, setCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const btnRef = React.useRef<HTMLButtonElement>(null);
   const selected = CURRENCIES.find(c => c.code === currency) ?? CURRENCIES[0];
+
+  React.useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  const handleOpen = () => {
+    if (btnRef.current) setRect(btnRef.current.getBoundingClientRect());
+    setOpen(o => !o);
+  };
+
+  const handleClose = () => setOpen(false);
+  const handleSelect = (code: string) => { setCurrency(code); setOpen(false); };
 
   return (
     <div className="relative">
       <button
-        onClick={() => setOpen(o => !o)}
+        ref={btnRef}
+        onClick={handleOpen}
         aria-label="Select currency"
         aria-expanded={open}
-        className="flex items-center gap-1.5 cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--card)] pl-3 pr-2.5 py-2 text-sm font-medium text-[var(--foreground)] hover:border-[var(--primary)] focus:outline-none focus:border-[var(--primary)] transition-all"
+        className="flex items-center gap-2 cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--card)] pl-3 pr-2.5 py-2 text-sm font-medium text-[var(--foreground)] hover:border-[var(--primary)] focus:outline-none focus:border-[var(--primary)] transition-all min-w-[90px]"
       >
-        <span>{selected.flag}</span>
+        <span className="font-bold text-[var(--primary)] text-xs">{selected.symbol}</span>
         <span>{selected.code}</span>
-        <span className="text-[var(--muted-foreground)] text-xs ml-0.5">▾</span>
+        <span className="text-[var(--muted-foreground)] text-xs ml-auto">▾</span>
       </button>
-      {open && (
+      {open && rect && (
         <>
-          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-1 z-20 max-h-64 w-44 overflow-y-auto rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-lg py-1">
+          <div className="fixed inset-0 z-40" onClick={handleClose} />
+          <div
+            className="fixed z-50 max-h-72 w-52 overflow-y-auto rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-xl py-1"
+            style={{ top: rect.bottom + 6, left: rect.left }}
+          >
             {CURRENCIES.map(c => (
               <button
                 key={c.code}
-                onClick={() => { setCurrency(c.code); setOpen(false); }}
-                className={`w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-[var(--muted)] transition-colors ${c.code === currency ? "text-[var(--primary)] font-semibold" : "text-[var(--foreground)]"}`}
+                onClick={() => handleSelect(c.code)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-[var(--muted)] transition-colors text-left ${c.code === currency ? "text-[var(--primary)] font-semibold bg-[var(--muted)]" : "text-[var(--foreground)]"}`}
               >
-                <span>{c.flag}</span>
-                <span>{c.code}</span>
-                <span className="ml-auto text-xs text-[var(--muted-foreground)]">{c.symbol}</span>
+                <span className="w-8 font-bold text-xs text-[var(--primary)] shrink-0">{c.symbol}</span>
+                <span className="font-medium">{c.code}</span>
+                <span className="ml-auto text-xs text-[var(--muted-foreground)] truncate max-w-[90px]">{c.name}</span>
               </button>
             ))}
           </div>

@@ -14,6 +14,7 @@ export const CURRENCIES = [
   { code: "SGD", symbol: "S$",   flag: "🇸🇬", name: "Singapore Dollar" },
   { code: "MXN", symbol: "MX$",  flag: "🇲🇽", name: "Mexican Peso" },
   { code: "BRL", symbol: "R$",   flag: "🇧🇷", name: "Brazilian Real" },
+  { code: "CNY", symbol: "¥",    flag: "🇨🇳", name: "Chinese Yuan" },
 ];
 
 interface CurrencyCtx {
