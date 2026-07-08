@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { CATEGORY_META, getAllCategories, CALCULATORS } from "@/lib/calculators";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+  const router = useRouter();
   const [dark, setDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -130,6 +134,18 @@ export default function Navbar() {
               </div>
             </div>
 
+            <Link href="/loans" className="nav-link rounded-lg px-3 py-2 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all flex items-center gap-1.5">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 text-[10px] text-white font-bold">🏦</span>
+              Loans
+            </Link>
+            <Link href="/insurance" className="nav-link rounded-lg px-3 py-2 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all flex items-center gap-1.5">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 text-[10px] text-white font-bold">🛡️</span>
+              Insurance
+            </Link>
+            <Link href="/investments" className="nav-link rounded-lg px-3 py-2 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all flex items-center gap-1.5">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 text-[10px] text-white font-bold">📈</span>
+              Invest
+            </Link>
             <Link href="/tools" className="nav-link rounded-lg px-3 py-2 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all">
               Tools
             </Link>
@@ -183,6 +199,47 @@ export default function Navbar() {
               )}
             </button>
 
+            {/* Account menu (logged in) */}
+            {user ? (
+              <div className="relative group hidden sm:block">
+                <button className="flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] pl-1 pr-2.5 py-1 text-sm font-medium text-[var(--foreground)] hover:border-[var(--primary)] transition-all">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-[11px] font-bold text-white">
+                    {user.name.charAt(0).toUpperCase()}
+                  </span>
+                  <span className="max-w-[80px] truncate">{user.name.split(" ")[0]}</span>
+                  <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
+                  <div className="px-4 py-2 border-b border-[var(--border)] mb-1">
+                    <p className="text-sm font-semibold text-[var(--foreground)] truncate">{user.name}</p>
+                    <p className="text-xs text-[var(--muted-foreground)] truncate">{user.email}</p>
+                  </div>
+                  <Link href="/loans/dashboard" className="flex items-center gap-2.5 px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors">
+                    <span>📊</span> My Dashboard
+                  </Link>
+                  <Link href="/loans/compare" className="flex items-center gap-2.5 px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors">
+                    <span>🏦</span> Browse Loans
+                  </Link>
+                  <div className="mx-4 my-1 border-t border-[var(--border)]" />
+                  <button
+                    onClick={async () => { await logout(); router.push("/loans"); }}
+                    className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-[var(--muted)] transition-colors"
+                  >
+                    <span>↩</span> Sign Out
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link
+                href="/loans"
+                className="hidden sm:flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-3.5 py-1.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+              >
+                Sign In
+              </Link>
+            )}
+
             {/* Mobile menu toggle */}
             <button
               className="lg:hidden rounded-lg p-2 text-[var(--muted-foreground)] hover:bg-[var(--muted)] transition-all"
@@ -204,6 +261,20 @@ export default function Navbar() {
             <Link href="/calculators" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
               🧮 All Calculators
             </Link>
+            <Link href="/loans" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
+              🏦 Loans
+            </Link>
+            <Link href="/insurance" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
+              🛡️ Insurance
+            </Link>
+            <Link href="/investments" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
+              📈 Investments
+            </Link>
+            {user && (
+              <Link href="/loans/dashboard" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
+                📊 My Dashboard
+              </Link>
+            )}
             <Link href="/calculators?filter=popular" className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
               🔥 Popular
             </Link>
@@ -220,6 +291,20 @@ export default function Navbar() {
                   <span className="font-medium">{CATEGORY_META[cat].name}</span>
                 </Link>
               ))}
+            </div>
+            <div className="pt-2 border-t border-[var(--border)]">
+              {user ? (
+                <button
+                  onClick={async () => { setMenuOpen(false); await logout(); router.push("/loans"); }}
+                  className="block w-full text-left rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-[var(--muted)]"
+                >
+                  ↩ Sign Out ({user.name.split(" ")[0]})
+                </button>
+              ) : (
+                <Link href="/loans" className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--primary)] hover:bg-[var(--muted)]" onClick={() => setMenuOpen(false)}>
+                  → Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}

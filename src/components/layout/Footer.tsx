@@ -275,8 +275,21 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 5 — Company & Legal */}
+          {/* Col 5 — Marketplace + Company & Legal */}
           <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)] mb-4">Marketplace</h3>
+            <ul className="space-y-2.5 mb-6">
+              {[
+                { name: "🏦 Compare Loans", href: "/loans" },
+                { name: "🛡️ Insurance Quotes", href: "/insurance" },
+                { name: "📈 Investments", href: "/investments" },
+              ].map(l => (
+                <li key={l.name}>
+                  <Link href={l.href} className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors">{l.name}</Link>
+                </li>
+              ))}
+            </ul>
+
             <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)] mb-4">Company</h3>
             <ul className="space-y-2.5 mb-4">
               {COMPANY_LINKS.map(l => (

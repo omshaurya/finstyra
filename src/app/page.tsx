@@ -170,6 +170,33 @@ export default function HomePage() {
           </StaggerContainer>
         </section>
 
+        {/* ── Financial Marketplace ── */}
+        <section>
+          <SlideUp className="mb-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] mb-1">Beyond Calculators</p>
+            <h2 className="text-2xl font-bold text-[var(--foreground)]">Compare & Apply — Loans, Insurance & Investments</h2>
+            <p className="text-sm text-[var(--muted-foreground)] mt-1">Get real quotes from top providers across the US, Europe and worldwide.</p>
+          </SlideUp>
+          <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-3" staggerChildren={0.1}>
+            {[
+              { href: "/loans", icon: "🏦", title: "Loans", color: "from-indigo-500 to-purple-600", desc: "Personal, home, auto, business & student loans from 15+ US & European banks. Compare APRs and apply.", cta: "Compare Loans" },
+              { href: "/insurance", icon: "🛡️", title: "Insurance", color: "from-emerald-500 to-teal-600", desc: "Health, life, auto, home & travel cover from top insurers. Find the best premium in minutes.", cta: "Get Insurance Quotes" },
+              { href: "/investments", icon: "📈", title: "Investments", color: "from-indigo-500 to-purple-600", desc: "56+ products worldwide — index funds, stocks, crypto, real estate, gold, bonds & more.", cta: "Explore Investments" },
+            ].map(v => (
+              <StaggerItem key={v.href}>
+                <Link href={v.href} className="group block h-full">
+                  <div className="h-full rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 premium-card card-shadow hover:border-[var(--primary)] transition-all flex flex-col">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${v.color} text-2xl shadow-sm mb-4`}>{v.icon}</div>
+                    <h3 className="font-bold text-lg text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors mb-1">{v.title}</h3>
+                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4 flex-1">{v.desc}</p>
+                    <span className="text-sm font-semibold text-[var(--primary)] group-hover:underline">{v.cta} →</span>
+                  </div>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </section>
+
         {/* ── Popular list ── */}
         <section>
           <SlideUp className="flex items-end justify-between mb-6">
