@@ -64,6 +64,7 @@ export default function InsuranceClient() {
     if (r === 'us' || r === 'europe') setRegion(r);
   }, []);
   const [compared, setCompared] = useState<string[]>([]);
+  const [showCompare, setShowCompare] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [applyTarget, setApplyTarget] = useState<InsurancePlan | null>(null);
@@ -162,12 +163,61 @@ export default function InsuranceClient() {
       {compared.length >= 2 && (
         <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--border)] bg-[var(--card)] shadow-2xl px-4 py-3"><div className="mx-auto max-w-7xl flex items-center gap-4">
           <div className="flex-1 flex items-center gap-2 overflow-x-auto">{comparedPlans.map(p => <div key={p.id} className="flex items-center gap-2 rounded-xl bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] shrink-0"><span>{p.flag}</span><span>{p.provider}</span><button onClick={() => toggle(p.id)} className="ml-1 text-[var(--muted-foreground)] hover:text-red-500">×</button></div>)}</div>
-          <button onClick={() => setCompared([])} className="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Clear</button>
+          <div className="flex items-center gap-2 shrink-0">
+            <button onClick={() => setCompared([])} className="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Clear</button>
+            <button onClick={() => setShowCompare(true)} className="rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-5 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">Compare {compared.length} Plans →</button>
+          </div>
         </div></div>
+      )}
+
+      {showCompare && comparedPlans.length >= 2 && (
+        <InsCompareModal plans={comparedPlans} onClose={() => setShowCompare(false)} onApply={p => { setShowCompare(false); handleApply(p); }} />
       )}
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} onSuccess={onAuth} loanName={applyTarget?.planName} />}
       {showProfile && user && <InsuranceProfileModal userName={user.name} onClose={() => setShowProfile(false)} onSuccess={onProfile} />}
+    </div>
+  );
+}
+
+function InsCompareModal({ plans, onClose, onApply }: { plans: InsurancePlan[]; onClose: () => void; onApply: (p: InsurancePlan) => void }) {
+  const rows: { label: string; key: (p: InsurancePlan) => string }[] = [
+    { label: 'Provider', key: p => p.provider },
+    { label: 'Country', key: p => `${p.flag} ${p.country}` },
+    { label: 'Plan', key: p => p.planName },
+    { label: 'Monthly Premium', key: p => `${p.currencySymbol}${p.minPremium} – ${p.currencySymbol}${p.maxPremium}` },
+    { label: 'Coverage', key: p => `${p.currencySymbol}${p.coverageAmount.toLocaleString()}` },
+    { label: 'Deductible', key: p => `${p.currencySymbol}${p.deductible.toLocaleString()}` },
+    { label: 'Network', key: p => p.network },
+    { label: 'Claim Time', key: p => p.claimTime },
+    { label: 'Rating', key: p => `⭐ ${p.rating} (${p.reviewCount.toLocaleString()})` },
+  ];
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-3xl rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-2xl overflow-hidden animate-fadeInUp max-h-[90vh] flex flex-col">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] shrink-0">
+          <h2 className="font-bold text-[var(--foreground)]">Insurance Comparison</h2>
+          <button onClick={onClose} className="text-[var(--muted-foreground)] hover:text-[var(--foreground)]"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+        </div>
+        <div className="overflow-auto flex-1">
+          <table className="w-full text-sm">
+            <thead><tr>
+              <th className="py-3 px-4 text-left text-xs text-[var(--muted-foreground)] font-semibold uppercase tracking-wide bg-[var(--muted)] w-32">Feature</th>
+              {plans.map(p => <th key={p.id} className="py-3 px-4 text-center bg-[var(--muted)] border-l border-[var(--border)]"><div className="flex flex-col items-center gap-1"><span className="text-lg">{p.flag}</span><span className="font-bold text-[var(--foreground)] text-xs">{p.provider}</span>{p.badge && <span className="rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 px-1.5 py-0.5 text-[10px] font-bold">{p.badge}</span>}</div></th>)}
+            </tr></thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr key={row.label} className={i % 2 === 0 ? 'bg-[var(--card)]' : 'bg-[var(--muted)]/30'}>
+                  <td className="py-3 px-4 text-xs font-semibold text-[var(--muted-foreground)]">{row.label}</td>
+                  {plans.map(p => <td key={p.id} className="py-3 px-4 text-center text-xs font-medium text-[var(--foreground)] border-l border-[var(--border)]">{row.key(p)}</td>)}
+                </tr>
+              ))}
+              <tr className="bg-[var(--card)] border-t border-[var(--border)]"><td className="py-3 px-4" />{plans.map(p => <td key={p.id} className="py-3 px-4 text-center border-l border-[var(--border)]"><button onClick={() => onApply(p)} className="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 py-2 text-xs font-semibold text-white hover:opacity-90">Get Quote →</button></td>)}</tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
